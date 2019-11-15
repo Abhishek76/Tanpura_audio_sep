@@ -26,9 +26,7 @@ python server.py 0.0.0.0 port 8000
 
 open another terminal from the folder location
 
-and start flask in the virtual env where you made and installed the dependencies 
-
-I did in a virtualenv named env
+and start flask in the virtual env where you made and installed the dependencies  I did in a virtualenv named env
 
 source env/bin/activate
 
