@@ -117,16 +117,3 @@ def mfcc_calc(file_address, frame_size=frame_size, frame_stride=frame_stride, nf
     return mfcc_result.T.reshape(1,-1)
 
 
-def clf_SVM(X, Y):
-    X, Y = shuffle(X, Y)
-    train_size = int(len(X) * 0.02)
-    X_train, Y_train = X[:train_size], Y[:train_size]
-    X_test, Y_test = X[train_size:], Y[train_size:]
-    parameters = {'C': [10, 1, 1e-1, 1e-2, 1e-3]}
-    svc = SVC(kernel='linear')
-    clf = GridSearchCV(svc, parameters, cv=2, return_train_score=False, iid=False)
-    clf.fit(X_train, Y_train)
-    results = clf.cv_results_
-    opt_index = clf.best_index_
-    testing_score = clf.best_estimator_.fit(X_train, Y_train).score(X_test, Y_test)
-    return clf.best_estimator_, testing_score
